@@ -1,21 +1,21 @@
-import abc
-from multiprocessing import Manager, Process
+from multiprocessing import Manager
 
+from modules.oktv.oktv_main import run_module as ok_tv_module
 
-class BaseScrap:
-    @abc.abstractmethod
-    def run(self):
-        pass
 
 def main():
     with Manager() as manager:
         multiprocessing_dict = manager.dict()
-        # p = Process(target=f, args=(d, l))
-        # p.start()
-        # p.join()
-        #
-        # print(d)
-        # print(l)
+        child_processes = list()
+        child_processes.append(ok_tv_module(multiprocessing_dict))
+
+        try:
+            for process in child_processes:
+                process.start()
+        finally:
+            for process in child_processes:
+                process.join()
+        print(multiprocessing_dict)
 
 if __name__ == '__main__':
     main()
