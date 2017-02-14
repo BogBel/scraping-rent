@@ -1,3 +1,4 @@
+import asyncio
 from multiprocessing import Process
 
 from tools.basic import BaseScrap
@@ -6,6 +7,7 @@ from tools.basic import BaseScrap
 class OkTvProcessor(BaseScrap):
     def __init__(self, m_dict):
         self.multiprocessing_dict = m_dict
+        self.loop = asyncio.new_event_loop()
 
     def run(self):
         self.multiprocessing_dict['ok_tv'] = {'data': True}
