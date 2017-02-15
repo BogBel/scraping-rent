@@ -20,6 +20,7 @@ async def async_request(url, headers=None, loop=None):
     :param loop: asyncio.event_loop
     """
     error = None
+    logging.debug(url)
     for _ in range(settings.REQUEST_MAX_RETRIES):
         try:
             with aiohttp.Timeout(settings.REQUEST_TIMEOUT, loop=loop):
