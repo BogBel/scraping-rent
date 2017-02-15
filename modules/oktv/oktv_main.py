@@ -3,7 +3,7 @@ from multiprocessing import Process
 
 from lxml import html
 
-from modules.oktv.constants import REQUEST_HEADERS, LINKS_XPATH, CALENDAR_XPATH
+from modules.oktv.constants import REQUEST_HEADERS, LINKS_XPATH, CALENDAR_XPATH, MAIN_PAGE_URL
 from tools.basic import BaseScrap, async_request
 
 
@@ -11,6 +11,11 @@ class OkTvProcessor(BaseScrap):
     def __init__(self, m_dict):
         self.multiprocessing_dict = m_dict
         self.loop = asyncio.new_event_loop()
+
+    @staticmethod
+    def _get_attr(tree, xpath, attr):
+        for tag in tree.xpath(xpath):
+            yield tag.get(attr)
 
     @staticmethod
     def _make_state(div):
@@ -25,11 +30,6 @@ class OkTvProcessor(BaseScrap):
     def _is_correct_day(div):
         return 'old' not in div.get('class')
 
-    @staticmethod
-    def _get_attr(tree, xpath, attr):
-        for tag in tree.xpath(xpath):
-            yield tag.get(attr)
-
     async def _get_calendar(self, url):
         """
         :param url: https://oktv.ua/id3093636
@@ -42,7 +42,7 @@ class OkTvProcessor(BaseScrap):
                  '10.03.2017': True,
                 }}
         """
-        response = await async_request(url, headers=REQUEST_HEADERS, loop=self.loop)
+        response = await async_request(url, method='get', headers=REQUEST_HEADERS, loop=self.loop)
         tree = html.fromstring(response)
         divs = filter(self._is_correct_day, tree.xpath(CALENDAR_XPATH))
         return {url: dict(map(self._make_state, divs))}
@@ -55,7 +55,7 @@ class OkTvProcessor(BaseScrap):
         'https://oktv.ua/id3093593'
         }
         """
-        response = await async_request('https://oktv.ua/kievskaya-oblast/kiev', headers=REQUEST_HEADERS, loop=self.loop)
+        response = await async_request(MAIN_PAGE_URL, method='get', headers=REQUEST_HEADERS, loop=self.loop)
         tree = html.fromstring(response)
         hrefs = set(map('https://oktv.ua{}'.format,
                         self._get_attr(tree=tree, xpath=LINKS_XPATH, attr='href')))

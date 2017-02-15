@@ -12,11 +12,13 @@ class BaseScrap:
     def run(self):
         raise NotImplementedError
 
-async def async_request(url, headers=None, loop=None):
+
+async def async_request(url, method, return_type='text', loop=None, **kwargs):
     """
     Async request
     :param url: url for get request
-    :param headers: if required pass dict
+    :param method: 'get' or 'post' supported
+    :param return_type: 'text' or 'json'
     :param loop: asyncio.event_loop
     """
     error = None
@@ -25,8 +27,14 @@ async def async_request(url, headers=None, loop=None):
         try:
             with aiohttp.Timeout(settings.REQUEST_TIMEOUT, loop=loop):
                 async with aiohttp.ClientSession(loop=loop) as session:
-                    async with session.get(url=url, headers=headers) as response:
-                        return await response.text()
+                    async with session.request(method=method, url=url, **kwargs) as response:
+                        if return_type == 'text':
+                            return await response.text()
+                        elif return_type == 'json':
+                            return await response.json()
+                        else:
+                            logging.warning('wrong type for request {}'.format(return_type))
+                            return None
         except (aiohttp.errors.ClientError,
                 asyncio.TimeoutError,
                 aiohttp.errors.DisconnectedError,

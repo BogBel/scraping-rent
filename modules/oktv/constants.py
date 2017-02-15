@@ -13,3 +13,4 @@ REQUEST_HEADERS = {
 }
 LINKS_XPATH = '//div[@class="object_v_spiske"]/div/a'
 CALENDAR_XPATH = '//div[@class="calendar"]/div'
+MAIN_PAGE_URL = 'https://oktv.ua/kievskaya-oblast/kiev'
