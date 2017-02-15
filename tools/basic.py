@@ -26,7 +26,7 @@ async def async_request(url, headers=None, cookies=None, loop=None):
             print(2)
             with aiohttp.Timeout(settings.REQUEST_TIMEOUT, loop=loop):
                 print(3)
-                async with aiohttp.ClientSession(loop=loop, cookies=cookies) as session:
+                async with aiohttp.ClientSession(loop=loop) as session:
                     print(4)
                     async with session.get(url=url, headers=headers) as response:
                         print(5)

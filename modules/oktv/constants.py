@@ -1,11 +1,24 @@
 REQUEST_HEADERS = {
-# Cookie:PHPSESSID=e870a22570c1ca45c632a80350c0ee49; _ym_uid=1487017291187918488; jv_enter_ts_S21xxCYkU6=1487017293242; jv_visits_count_S21xxCYkU6=1; _ym_isad=1; CUR=USD; _ga=GA1.2.1929622121.1487017290; jv_pages_count_S21xxCYkU6=11; jv_invitation_time_S21xxCYkU6=1487106491791; jv_close_time_S21xxCYkU6=1487109885489
  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
  'Accept-Encoding': 'gzip, deflate, sdch, br',
  'Accept-Language': 'ru,en-US;q=0.8,en;q=0.6,uk;q=0.4',
  'Cache-Control': 'max-age=0',
  'Connection': 'keep-alive',
  'Host': 'oktv.ua',
+ # 'Cookie': 'PHPSESSID=eeb82f4b511c9d8dac803d98d5ef6394;'
+ #           ' _ym_uid=1487078319334737686;'
+ #           ' jv_enter_ts_S21xxCYkU6=1487078320660;'
+ #           ' jv_visits_count_S21xxCYkU6=1;'
+ #           ' _ym_isad=1;'
+ #           ' jv_invitation_time_S21xxCYkU6=1487151988639;'
+ #           ' jv_close_time_S21xxCYkU6=1487157636950;'
+ #           ' _gat=1; _dc_gtm_UA-57051714-1=1;'
+ #           ' _gat_UA-57051714-1=1;'
+ #           ' _ym_visorc_23703034=w;'
+ #           ' _ym_visorc_27913641=w;'
+ #           ' _ga=GA1.2.1679315878.1487078318;'
+ #           ' CUR=UAH;'
+ #           ' jv_pages_count_S21xxCYkU6=25',
  'Referer': 'https://oktv.ua/kievskaya-oblast/kiev',
  'Upgrade-Insecure-Requests': '1',
  'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)'
@@ -23,7 +36,7 @@ REQUEST_COOKIES = {
     '_ym_visorc_27913641': 'w',
     'CUR': 'USD',
     '_ga': 'GA1.2.1929622121.1487017290',
-    'jv_pages_count_S21xxCYkU6': '12',
+    'jv_pages_count_S21xxCYkU6': '50',
     'jv_invitation_time_S21xxCYkU6': '1487110250802',
     '_gat_UA-57051714-1': '1',
     'jv_close_time_S21xxCYkU6': '148711030038',

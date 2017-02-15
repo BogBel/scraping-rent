@@ -15,9 +15,10 @@ class OkTvProcessor(BaseScrap):
         print(1111111111111111111111)
         response = await async_request('https://oktv.ua/kievskaya-oblast/kiev', headers=REQUEST_HEADERS, loop=self.loop)
         tree = html.fromstring(response)
-        hrefs = [link.get('href') for link in tree.xpath('//div[@class="object_v_spiske"]/div/a')]
+        hrefs = {'https://oktv.ua/{}'.format(link.get('href')) for link in tree.xpath('//div[@class="object_v_spiske"]/div/a')}
         from pprint import pprint
         pprint(hrefs)
+        print(len(hrefs))
 
     async def proceed(self):
         await self._collect_urls()
