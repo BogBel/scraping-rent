@@ -5,56 +5,11 @@ REQUEST_HEADERS = {
  'Cache-Control': 'max-age=0',
  'Connection': 'keep-alive',
  'Host': 'oktv.ua',
- # 'Cookie': 'PHPSESSID=eeb82f4b511c9d8dac803d98d5ef6394;'
- #           ' _ym_uid=1487078319334737686;'
- #           ' jv_enter_ts_S21xxCYkU6=1487078320660;'
- #           ' jv_visits_count_S21xxCYkU6=1;'
- #           ' _ym_isad=1;'
- #           ' jv_invitation_time_S21xxCYkU6=1487151988639;'
- #           ' jv_close_time_S21xxCYkU6=1487157636950;'
- #           ' _gat=1; _dc_gtm_UA-57051714-1=1;'
- #           ' _gat_UA-57051714-1=1;'
- #           ' _ym_visorc_23703034=w;'
- #           ' _ym_visorc_27913641=w;'
- #           ' _ga=GA1.2.1679315878.1487078318;'
- #           ' CUR=UAH;'
- #           ' jv_pages_count_S21xxCYkU6=25',
+
  'Referer': 'https://oktv.ua/kievskaya-oblast/kiev',
  'Upgrade-Insecure-Requests': '1',
  'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)'
                ' Chrome/53.0.2785.143 Safari/537.36',
 }
-REQUEST_COOKIES = {
-    'PHPSESSID': 'e870a22570c1ca45c632a80350c0ee49',
-    '_ym_uid': '1487017291187918488',
-    'jv_enter_ts_S21xxCYkU6': '1487017293242',
-    'jv_visits_count_S21xxCYkU6': '1',
-    '_ym_isad': '1',
-    '_gat': '1',
-    '_dc_gtm_UA-57051714-1': '1',
-    '_ym_visorc_23703034': 'w',
-    '_ym_visorc_27913641': 'w',
-    'CUR': 'USD',
-    '_ga': 'GA1.2.1929622121.1487017290',
-    'jv_pages_count_S21xxCYkU6': '50',
-    'jv_invitation_time_S21xxCYkU6': '1487110250802',
-    '_gat_UA-57051714-1': '1',
-    'jv_close_time_S21xxCYkU6': '148711030038',
-}
-    # 'PHPSESSID': 'e870a22570c1ca45c632a80350c0ee49',
-    # ' _ym_uid': '1487017291187918488',
-    # ' jv_enter_ts_S21xxCYkU6': '1487017293242',
-    # ' jv_visits_count_S21xxCYkU6': '1',
-    # ' jv_close_time_S21xxCYkU6': '1487017388664',
-    # ' _gat': '1',
-    # ' _ym_isad': '1',
-    # ' _dc_gtm_UA-57051714-1': '1',
-    # ' jv_invitation_time_S21xxCYkU6': '1487106021694',
-    # ' _gat_UA-57051714-1': '1',
-    # ' CUR': 'UAH',
-    # ' _ym_visorc_23703034': 'w',
-    # ' _ym_visorc_27913641': 'w',
-    # ' _ga': 'GA1.2.1929622121.1487017290',
-    # ' jv_pages_count_S21xxCYkU6': '6'
-# }
-# EUR, RUB, USD
+LINKS_XPATH = '//div[@class="object_v_spiske"]/div/a'
+CALENDAR_XPATH = '//div[@class="calendar"]/div'
