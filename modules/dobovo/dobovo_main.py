@@ -1,6 +1,7 @@
 import asyncio
 from multiprocessing import Process
 from itertools import starmap
+from datetime import datetime
 
 from lxml import html
 
@@ -34,6 +35,7 @@ class DobovoProcessor(BaseScrap):
         :param day: "2017-02-15"
         :param stats: {"price":"1323.00", "state":"0", "minnights":"1", "currency":"UAH"}
         """
+        day = datetime.strftime(datetime.strptime(day, '%Y-%m-%d'), '%d.%m.%Y')
         return day, stats['state'] == "1"
 
     async def _get_calendar(self, item_id, url):

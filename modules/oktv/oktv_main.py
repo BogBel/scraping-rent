@@ -24,11 +24,12 @@ class OkTvProcessor(BaseScrap):
         :return: ('14.02.2017',
                   True) # if 'free'
         """
-        return div.get("data-time-default"), div.get('data-busy') == 'free'
+        return div.get("data-time-default"), div.get('data-busy')
 
     @staticmethod
     def _is_correct_day(div):
-        return 'old' not in div.get('class')
+        class_name = div.get('class')
+        return class_name != 'clear' and 'old' not in class_name
 
     async def _get_calendar(self, url):
         """
