@@ -27,7 +27,7 @@ Few to stages to setup project
 ```shell
 git clone https://github.com/BogBel/scraping-rent.git
 cd scraping-rent/
-virtualenv -p /usr/bin/python3.5
+virtualenv -p /usr/bin/python3.5 .env
 source .env/bin/activate
 pip install -r requirements.txt
 ```
