@@ -22,12 +22,12 @@ async def async_request(url, method, return_type='text', loop=None, **kwargs):
     :param loop: asyncio.event_loop
     """
     error = None
-    logging.debug(url)
     for _ in range(settings.REQUEST_MAX_RETRIES):
         try:
             with aiohttp.Timeout(settings.REQUEST_TIMEOUT, loop=loop):
                 async with aiohttp.ClientSession(loop=loop) as session:
                     async with session.request(method=method, url=url, **kwargs) as response:
+                        logging.debug(url)
                         if return_type == 'text':
                             return await response.text()
                         elif return_type == 'json':
