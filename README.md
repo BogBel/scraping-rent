@@ -16,7 +16,8 @@ apt-get install python3.5
 
 For lxml(May be root required)
 ```shell
-
+apt-get install python3.5-dev
+apt-get install libxml2-dev libxslt-dev
 ```
 
 
