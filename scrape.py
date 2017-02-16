@@ -2,6 +2,7 @@ from multiprocessing import Manager
 import json
 import argparse
 from copy import deepcopy
+import logging
 
 from modules.oktv.oktv_main import run_module as ok_tv_module
 from modules.dobovo.dobovo_main import run_module as dobovo_module
@@ -9,8 +10,8 @@ from modules.dobovo.dobovo_main import run_module as dobovo_module
 
 def get_args():
     arg_parser = argparse.ArgumentParser(description='Scrape Rent', add_help=True)
-    arg_parser.add_argument('--write', '-w', action='store', help='filename result will be stored in', default=False)
-    arg_parser.add_argument('--show', '-s', action='store_true', help='Show output to stdout', default=True)
+    arg_parser.add_argument('--write', '-w', action='store', help='filename result will be stored in')
+    arg_parser.add_argument('--show', '-s', action='store_true', help='Show output to stdout')
     return arg_parser
 
 
@@ -48,20 +49,24 @@ def main():
         }
     }
     """
+    logging.getLogger().setLevel(logging.DEBUG)
     with Manager() as manager:
+        args = vars(get_args().parse_args())
+        if not any(args.values()):
+            logging.warning('Please run with at least one argument(--show or --write). -h for help')
+            return
         multiprocessing_dict = manager.dict()
         child_processes = list()
         child_processes.append(dobovo_module(multiprocessing_dict))
         child_processes.append(ok_tv_module(multiprocessing_dict))
-        args = vars(get_args().parse_args())
-        print(args)
         try:
             for process in child_processes:
                 process.start()
         finally:
             for process in child_processes:
                 process.join()
-        print(multiprocessing_dict)
+        if args.get('show'):
+            print(multiprocessing_dict)
         filename = args.get('write')
         if filename:
             with open('{}.json'.format(filename), 'w') as outfile:

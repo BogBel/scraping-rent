@@ -24,7 +24,7 @@ class OkTvProcessor(BaseScrap):
         :return: ('14.02.2017',
                   True) # if 'free'
         """
-        return div.get("data-time-default"), div.get('data-busy')
+        return div.get("data-time-default"), div.get('data-busy') == 'free'
 
     @staticmethod
     def _is_correct_day(div):
